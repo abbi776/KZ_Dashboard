@@ -16,7 +16,8 @@ with open('C:/Users/AbdullahToqeer/Desktop/dashboard data/map.geojson') as f:
     geojson_data = geojson.load(f)
 
 #creating empty dataframe to load all the parcels data
-column_names = ["parcel_foreign_id_x", "s1product_end_time", "s1product_ron","cohvh_avg", "cohvv_avg", "vhvv_avg","parcel_foreign_id_y", "s2product_start_time", "s2product_ron", "ndvi_avg" ]
+column_names = ["parcel_foreign_id_x", "s1product_end_time", "s1product_ron","cohvh_avg", "cohvv_avg", "vhvv_avg","parcel_foreign_id_y", "s2product_start_time",
+                "s2product_ron", "ndvi_avg" ]
 df = pd.DataFrame(columns = column_names)
 
 #function to automatically load all the parcels data 
@@ -84,7 +85,8 @@ app.layout = html.Div([
                   '101', '102', '103','104', '105', '106','107', '108', '109','110',
                   '111', '112', '113','114', '115', '116','117', '118', '119','120',
                   '121', '122', '123','124', '125', '126','127', '128', '129','130',
-                  '131', '132', '133','134', '135', '136','137', '138', '139','140'], '1', multi=False, id='my-dropdown', style={"width": "50%"})],style={'color': 'white'}),
+                  '131', '132', '133','134', '135', '136','137', '138', '139','140'], '1', multi=False, id='my-dropdown', style={"width": "50%"})]
+        ,style={'color': 'white'}),
 
 #Graph and map
     html.Div([
@@ -104,7 +106,9 @@ app.layout = html.Div([
                 dl.Map(center = [47.3824, 2.9253],
                 zoom=10,children=[
                     dl.TileLayer(),
-                    dl.GeoJSON(data=geojson_data, zoomToBounds=True, zoomToBoundsOnClick=True, hoverStyle=arrow_function(dict(weight=5, color='#666', dashArray='')), hideout=dict(colorscale=colorscale, classes=classes, style=style, colorProp="density"),options=dict(style=dict(color="darkgreen")), id="geojson"),
+                    dl.GeoJSON(data=geojson_data, zoomToBounds=True, zoomToBoundsOnClick=True, hoverStyle=arrow_function(dict(weight=5, color='#666', dashArray=''))
+                               , hideout=dict(colorscale=colorscale, classes=classes, style=style, colorProp="density"),options=dict(style=dict(color="darkgreen"))
+                               , id="geojson"),
                     ], style={'width': '950px', 'height': '800px', 'margin': "auto", "display": "block"}, id="map"),
 ],className="six columns")],className='row'),
 
