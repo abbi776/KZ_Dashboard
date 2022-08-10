@@ -100,8 +100,7 @@ app.layout = html.Div([
                 'plot_bgcolor': colors['background'],
                 'paper_bgcolor': colors['background']
                 }}
-                       ),    
-                      
+                       ),       
             html.Div([
                 dl.Map(center = [47.3824, 2.9253],
                 zoom=10,children=[
@@ -112,19 +111,13 @@ app.layout = html.Div([
                     ], style={'width': '950px', 'height': '800px', 'margin': "auto", "display": "block"}, id="map"),
 ],className="six columns")],className='row'),
 
-#display of parcel number upon selecting from map
-    html.Div([  
-                
-
+        #display of parcel number upon selecting from map
+    html.Div([          
                 html.Div(id="state",style={'textAlign': 'center', 'color': 'red'},
-                       className="six columns")], className='row')
-             
-])
-])
+                       className="six columns")], className='row')])])
 
 #duplicate callback outputs to make graph chnage from both dropdown input and click from map
 @app.callback(Output('graph', 'figure'),Input('my-dropdown', 'value'), Input('geojson', 'hover_feature'), prevent_initial_call=True)
-
 def update_graph(parcel_foreign_id_x_selected, features):
     triggered_id = ctx.triggered_id
     print(triggered_id)
@@ -153,7 +146,6 @@ def state_hover(features):
 
 #callback to update the parcel name upon clicking from map
 @app.callback(Output("state", "children"), [Input("geojson", "hover_feature")])
-
 def state_hover_name(features):
     if features is not None:
         return f"You selected Parcel # {features['properties']['parcel_id']}"
