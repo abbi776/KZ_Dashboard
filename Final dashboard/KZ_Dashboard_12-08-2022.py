@@ -3,7 +3,6 @@ import dash
 import dash_leaflet as dl
 import geopandas as gpd
 from dash import html, Input, ctx, Output
-import dash_leaflet as dl
 from dash_extensions.javascript import arrow_function, assign
 import geojson
 from dash import dcc
